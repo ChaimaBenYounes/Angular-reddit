@@ -8,7 +8,7 @@ import { Article } from './article/article.model';
 export class AppComponent {
   title = 'app works!';
   articles : Article[];
-  
+
   constructor() { 
     this.articles = [
       new Article('Angular 2', 'http://angular.io', 3),
@@ -19,6 +19,11 @@ export class AppComponent {
 
   addArticle(title: HTMLInputElement, link: HTMLInputElement): boolean {
     console.log(`Adding article title: ${title.value} and link: ${link.value}`);
+    this.articles.push(new Article(title.value, link.value, 0));
+    
+    title.value = '';
+    link.value = '';
+
     return false;
   }
 
